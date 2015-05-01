@@ -5,6 +5,10 @@
   "description": "A starter project for AngularJS",
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
+  "engines": {
+      "node": "0.12.x",
+      "npm": "2.7.x"
+  },
   "devDependencies": {
     "karma": "~0.10",
     "protractor": "^1.1.1",
