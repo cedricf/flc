@@ -1,0 +1,81 @@
+/* app css stylesheet */
+
+.b-header {
+	padding: 20px 0 160px 0;
+	background: url('./images/banner_background.jpg');
+	background-repeat: repeat-x;
+}
+
+.navbar-custom {
+	background: transparent;
+	border-width: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: white;
+	font-weight: bold;
+}
+
+.jumbotron {
+	background: transparent;
+}
+
+.jumbotron>p {
+	color: #F0F8FF;
+}
+
+.jumbotron>h1 {
+	color: #F0F8FF;
+}
+
+.btn-jumbotron {
+    color: #F0F8FF;
+    background-color: #00558F;
+    border-color: #00558F;
+    border-top-color: rgb(46, 109, 164);
+    border-right-color: rgb(46, 109, 164);
+    border-bottom-color: rgb(46, 109, 164);
+    border-left-color: rgb(46, 109, 164);
+}
+
+.header-tag {
+	margin: 50px;
+}
+
+.tryout-box {
+	display: block;
+	color: #F0F8FF;
+	margin: 100px 100px 100px 100px;
+	background: transparent;
+}
+
+.tryout-box .row {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.tryout-box .no-pad {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.tryout-box select {
+	color: #F0F8FF;
+    background-color: #00558F;
+    border-color: #00558F;
+    border-top-color: rgb(46, 109, 164);
+    border-right-color: rgb(46, 109, 164);
+    border-bottom-color: rgb(46, 109, 164);
+    border-left-color: rgb(46, 109, 164);
+}
+
+.tryout-box label {
+    font-size: 21px;
+	font-weight: 200;
+	line-height: 1.42857143;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;	
+}
+
+.tryout-box input {
+	text-align: right;
+}

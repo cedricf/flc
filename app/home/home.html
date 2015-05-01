@@ -1,0 +1,65 @@
+<div class="b-header">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header ">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+		  	<li><a href="#/signup">Sign Up</a></li>
+	      	<li><a href="#/login">Login</a></li>
+		    <li><a href="#/help">Help</a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<div class="container-fluid header-tag">
+	  <div class="row">
+	    <div class="col-md-6">		
+		  <div class="jumbotron">
+		    <h1>FluintC</h1>
+		    <p>A smarter way to send money home</p>
+		    <p><a class="btn btn-jumbotron btn-lg" href="#/learn" role="button">Learn more</a></p>
+		  </div>
+       </div>
+	   <div class="col-md-6">
+       <div class="tryout-box">
+	     <div class="row">
+         <div class="col-md-4 no-pad">
+			     <label for="sendAmount">You send</label>
+         </div>
+         <div class="col-md-6 no-pad">
+           <input type="text" class="form-control" ng-model="sendAmount" ng-change="sendAmountChanged();" id="sendAmount" placeholder="Amount" />
+         </div>
+         <div class="col-md-2 no-pad">
+	 		     <select class="form-control" ng-model="selectedSendCcy"  ng-change="sendCurrencyChanged();"
+             ng-options="currency as currency.label for currency in currencies">
+           </select>	
+			   </div>
+		   </div>
+	     <div class="row">
+         <div class="col-md-4 no-pad">
+			     <label for="receiveAmount">and receive</label>
+         </div>
+         <div class="col-md-6 no-pad">
+			     <input type="text" class="form-control" ng-model="receiveAmount" ng-change="receiveAmountChanged();" id="receiveAmount" placeholder="Amount" />
+         </div>
+         <div class="col-md-2 no-pad">
+	 		     <select class="form-control" ng-model="selectedReceiveCcy" ng-change="receiveCurrencyChanged();"
+             ng-options="currency as currency.label for currency in currencies">
+           </select>	
+		    </div>
+		   </div>
+	   </div>
+	 </div>
+ </div>
+  </div>
+</div>
