@@ -4,13 +4,23 @@ angular.module('myApp.exchange', [])
 .service('ExchangeService', function($http) {
   
   var self = this;
+  var params = {
+    spread: 0.9
+  };
 
   self.getRate = function(fromCcy, toCcy, callback){
     $http.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20(%22'
        + fromCcy + toCcy + '%22)&format=json&env=store://datatables.org/alltableswithkeys&callback=').
       success(function(data, status, headers, config) {
         console.log("From: " + fromCcy + " to: " + toCcy);
-        callback(data.query.results.rate.Rate);
+        var exchangeRate = data.query.results.rate.Rate;
+        console.log('Exchange rate is: ' + exchangeRate);
+        var rate = {
+          rate: exchangeRate * (1-(params.spread/100)),
+          spread: params.spread,
+          exchange: exchangeRate
+        }
+        callback(rate);
         // when the response is available
       }).
       error(function(data, status, headers, config) {

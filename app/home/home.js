@@ -40,7 +40,9 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.updatedSendSide = false;
     //get new exchange rates includeing spread and fees 
     ExchangeService.getRate($scope.selectedSendCcy.value, $scope.selectedReceiveCcy.value, function(newRate){
-      $scope.lastRate = newRate;
+      $scope.currentRate = newRate.rate;
+      $scope.currentSpread = newRate.spread;
+      $scope.currentExchange = newRate.exchange;
       $scope.lastSendCcy = $scope.selectedSendCcy;
 //      $scope.$apply(function(){
         $scope.update();
@@ -57,7 +59,9 @@ angular.module('myApp.home', ['ngRoute'])
     $scope.updatedSendSide = true;
     //get new exchange rates includeing spread and fees 
     ExchangeService.getRate($scope.selectedSendCcy.value, $scope.selectedReceiveCcy.value, function(newRate){
-      $scope.lastRate = newRate;
+      $scope.currentRate = newRate.rate;
+      $scope.currentSpread = newRate.spread;
+      $scope.currentExchange = newRate.exchange;
       $scope.lastReceiveCcy = $scope.selectedReceiveCcy;
 //      $scope.$apply(function(){
         $scope.update();
@@ -65,12 +69,17 @@ angular.module('myApp.home', ['ngRoute'])
     });
   };
   
+  $scope.parseFormattedAmount = function(formattedAmount){
+    var amount  = formattedAmount.replace(',', '');
+    return parseFloat(amount);
+  };
+  
   // we do calculations as an Integer to preserve precision
   $scope.update = function(){
     if($scope.updatedSendSide){
-      $scope.receiveAmount = $scope.formatAmount(Math.round(parseFloat($scope.sendAmount) * 100 * $scope.lastRate) / 100);
+      $scope.receiveAmount = $scope.formatAmount(Math.round($scope.parseFormattedAmount($scope.sendAmount) * 100 * $scope.currentRate) / 100);
     }else{
-      $scope.sendAmount = $scope.formatAmount(Math.round(parseFloat($scope.receiveAmount) * 100 / $scope.lastRate) / 100);
+      $scope.sendAmount = $scope.formatAmount(Math.round($scope.parseFormattedAmount($scope.receiveAmount) * 100 / $scope.currentRate) / 100);
     }
   };
 
