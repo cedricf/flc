@@ -42,9 +42,9 @@ angular.module('myApp.home', ['ngRoute'])
     ExchangeService.getRate($scope.selectedSendCcy.value, $scope.selectedReceiveCcy.value, function(newRate){
       $scope.lastRate = newRate;
       $scope.lastSendCcy = $scope.selectedSendCcy;
-      $scope.$apply(function(){
+//      $scope.$apply(function(){
         $scope.update();
-      });
+//      });
     });
   };
   
@@ -59,9 +59,9 @@ angular.module('myApp.home', ['ngRoute'])
     ExchangeService.getRate($scope.selectedSendCcy.value, $scope.selectedReceiveCcy.value, function(newRate){
       $scope.lastRate = newRate;
       $scope.lastReceiveCcy = $scope.selectedReceiveCcy;
-      $scope.$apply(function(){
+//      $scope.$apply(function(){
         $scope.update();
-      });
+//      });
     });
   };
   
