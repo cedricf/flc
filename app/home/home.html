@@ -1,68 +1,191 @@
-<div class="b-header">
-	<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header ">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	    </div>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="images/logo.png"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#/about">Transaction History</a></li>
+            <li><a href="#/contact">My Account</a></li>
+            <li><a href="#/help">Help</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav navbar-right">
-		  	<li><a href="#/signup">Sign Up</a></li>
-	      	<li><a href="#/login">Login</a></li>
-		    <li><a href="#/help">Help</a></li>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
-	<div class="container-fluid header-tag">
-	  <div class="row">
-	    <div class="col-md-6">		
-		  <div class="jumbotron">
-		    <h1>FluintC</h1>
-		    <p>A smarter way to send money home</p>
-		    <p><a class="btn btn-jumbotron btn-lg" href="#/learn" role="button">Learn more</a></p>
-		  </div>
-       </div>
-	   <div class="col-md-6">
-       <div class="tryout-box">
-	     <div class="row">
-         <div class="col-md-4 no-pad">
-			     <label for="sendAmount">You send</label>
-         </div>
-         <div class="col-md-6 no-pad">
-           <input type="text" class="form-control" ng-model="sendAmount" ng-change="sendAmountChanged();" id="sendAmount" placeholder="Amount" />
-         </div>
-         <div class="col-md-2 no-pad">
-	 		     <select class="form-control" ng-model="selectedSendCcy"  ng-change="sendCurrencyChanged();"
-             ng-options="currency as currency.label for currency in currencies">
+    <div class="container">
+
+        <div class="row nopadgin">
+        
+        	<form class="validate-form" action="" method="get">
+            
+        	<!-- ----- -->
+        	
+            <div class="col-md-6 nopadgin widgetWrap">
+            	
+                <div class="widget">
+                
+                	<div class="widgetHeader">
+                    	<h4>Transaction Details</h4>
+                    </div>
+                    
+                    <div class="widgetBody">
+                    	<div class="row">
+                        	<div class="col-xs-6 mb10">
+  								<input type="text" class="form-control" ng-model="sendAmount" ng-change="sendAmountChanged();" id="sendAmount" placeholder="Send" required >
+							</div>
+                        	<div class="col-xs-6 mb10">
+	 		     <select class="currency-select" ng-model="selectedSendCcy"  ng-change="sendCurrencyChanged();"
+             ng-options="currency as currency.label for currency in currencies" required>
            </select>	
-			   </div>
-		   </div>
-	     <div class="row">
-         <div class="col-md-4 no-pad">
-			     <label for="receiveAmount">and receive</label>
-         </div>
-         <div class="col-md-6 no-pad">
-			     <input type="text" class="form-control" ng-model="receiveAmount" ng-change="receiveAmountChanged();" id="receiveAmount" placeholder="Amount" />
-         </div>
-         <div class="col-md-2 no-pad">
-	 		     <select class="form-control" ng-model="selectedReceiveCcy" ng-change="receiveCurrencyChanged();"
-             ng-options="currency as currency.label for currency in currencies">
+							</div> 
+                        	<div class="col-xs-6 mb10">
+  								<input type="text" class="form-control"  ng-model="receiveAmount" ng-change="receiveAmountChanged();" id="receiveAmount" placeholder="Receive" required >
+							</div>
+                        	<div class="col-xs-6 mb10">
+	 		     <select class="currency-select" ng-model="selectedReceiveCcy" ng-change="receiveCurrencyChanged();"
+             ng-options="currency as currency.label for currency in currencies" required>
            </select>	
-		    </div>
-		   </div>
-	   </div>
-	 </div>
- </div>
-  </div>
-</div>
+							</div> 
+                            <div class="col-xs-12">
+                            	<p>Fee: <span>$6.00</span></p>
+                                <p>Exchange Rate: <span>{{currentRate}}</span></p>
+                            </div>
+						</div>                    
+                    </div>
+                                    
+                </div>
+            
+            </div>
+        
+        	<!-- ----- -->
+        	
+            <div class="col-md-6 nopadgin widgetWrap">
+            	
+				<div class="widget">
+              
+                    <div class="widgetHeader">
+                        <h4>Recipient Information</h4>
+                    </div>
+                    
+                    <div class="widgetBody">
+                        <div class="row">
+                            <div class="col-sm-6 mb10">
+                                <input type="text" class="form-control" placeholder="First Name" required >
+                            </div>
+                            <div class="col-sm-6 mb10">
+                                <input type="text" class="form-control" placeholder="Last Name" required >
+                            </div> 
+                            <div class="col-sm-6 mb10">
+                                <input type="text" class="form-control" placeholder="Company Name" required >
+                            </div>                             
+                            <div class="col-sm-6 mb10">
+                                <input type="text" class="form-control" placeholder="Reference Number/Comment" required >
+                            </div> 
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" placeholder="Purpose of Transaction">
+                            </div> 
+                        </div>
+                    </div>
+            
+				</div>  
+                  
+			</div>
+                
+        	<!-- ----- -->
+        	
+            <div class="col-md-6 nopadgin widgetWrap">
+            	
+                <div class="widget">
+                
+                	<div class="widgetHeader">
+                    	<h4>Deposit Information</h4>
+                    </div>
+                    
+                    <div class="widgetBody">
+                    	<div class="row">
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Bank Name" required >
+							</div>
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Account Name" required >
+							</div> 
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Account Number" required >
+							</div>                             
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="ABA Number" required >
+							</div> 
+                        	<div class="col-sm-6">
+  								<input type="text" class="form-control" placeholder="Swift/BIC" required >
+							</div> 
+						</div>
+                    </div>
+                
+                </div>
+                
+            </div>
+                
+        	<!-- ----- -->
+        	
+            <div class="col-md-6 nopadgin widgetWrap">
+            	
+                <div class="widget">
+                
+                	<div class="widgetHeader">
+                    	<h4>Recipient Bank Information</h4>
+                    </div>
+                    
+                    <div class="widgetBody">
+                    	<div class="row">
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Account Name*" required>
+							</div>
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Account Number*" required>
+							</div>  
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Bank Name*" required>
+							</div>
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Swift Code" required>
+							</div>   
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="IBANs" required>
+							</div>    
+                        	<div class="col-sm-6 mb10">
+  								<input type="text" class="form-control" placeholder="Branch Code" required>
+							</div> 
+                        	<div class="col-sm-6">
+  								<input type="text" class="form-control" placeholder="Contact Name">
+							</div> 
+                            <div class="col-sm-6">
+                            	<div class="checkBox"><input type="checkbox"><span>Save details as contact?</span></div>
+                            </div>                                                                                   
+                    	</div>                                  
+                    </div>
+                    
+                    <div class="widgetFooter">
+						<input type="submit" value="Send" class="btn_confirm">
+                    </div>
+                
+                </div>
+            
+            </div> 
+            
+            </form> 
+                                            
+        </div>
+
+    </div><!-- /.container -->
+
 <div>
   Exchange: {{currentExchange}}</br>
   Spread = {{currentSpread}} </br>
