@@ -38,7 +38,8 @@ angular.module('myApp.home', ['ngRoute'])
   
   $scope.sendCurrencyChanged = function(){
     $scope.updatedSendSide = false;
-    //get new exchange rates includeing spread and fees 
+    $scope.sendAmount = "...";
+    //get new exchange rates including spread and fees 
     ExchangeService.getRate($scope.selectedSendCcy.value, $scope.selectedReceiveCcy.value, function(newRate){
       $scope.currentRate = newRate.rate;
       $scope.currentSpread = newRate.spread;
@@ -57,7 +58,8 @@ angular.module('myApp.home', ['ngRoute'])
   
   $scope.receiveCurrencyChanged = function(){
     $scope.updatedSendSide = true;
-    //get new exchange rates includeing spread and fees 
+    $scope.receiveAmount = "...";
+    //get new exchange rates including spread and fees 
     ExchangeService.getRate($scope.selectedSendCcy.value, $scope.selectedReceiveCcy.value, function(newRate){
       $scope.currentRate = newRate.rate;
       $scope.currentSpread = newRate.spread;
@@ -84,16 +86,17 @@ angular.module('myApp.home', ['ngRoute'])
   };
 
   $scope.formatAmount = function(amount){
-    var DecimalSeparator = Number("1.2").toLocaleString().substr(1,1);
-
-    var AmountWithCommas = amount.toLocaleString();
-    var arParts = String(AmountWithCommas).split(DecimalSeparator);
-    var intPart = arParts[0];
-    var decPart = (arParts.length > 1 ? arParts[1] : '');
-    decPart = (decPart + '00').substr(0,2);
-
-    return intPart + DecimalSeparator + decPart;
+    var amt = parseFloat(amount);
+    if(amt === NaN){
+      return amount;
+    }
+    var sep = Number("1.2").toLocaleString().substr(1,1);
+    var formatedAmount = amt.toLocaleString().split(sep)[0]
+      + sep
+      + amt.toFixed(2).split(sep)[1]
+    return formatedAmount;
   };
-  
+    
+    
   $scope.receiveCurrencyChanged();
 }]);

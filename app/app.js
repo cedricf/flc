@@ -8,7 +8,8 @@ angular.module('myApp', [
   'myApp.login',
   'myApp.signup',
   'myApp.version',
-  'myApp.exchange'
+  'myApp.exchange',
+  'myApp.formatNumber'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/home'});
